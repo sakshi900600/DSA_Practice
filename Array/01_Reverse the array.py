@@ -1,6 +1,16 @@
 def reverseArr(a):
+    si = 0
+    ei = len(a)-1
 
-    return a[::-1]
+    while si < ei:
+        temp = a[si]
+        a[si] = a[ei]
+        a[ei] = temp
+        si += 1
+        ei -=1
+
+    # return a[::-1]
+    return a
 
 
 # input: 
