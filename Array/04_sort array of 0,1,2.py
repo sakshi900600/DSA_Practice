@@ -31,3 +31,6 @@ a = [0, 1, 2, 0, 1, 2]
 # a = [0,0,1,1,2,2]
 
 print(sortarr(a))
+
+
+# NOTE: the above solution is correct but on gfg you don't need to return array at end.
