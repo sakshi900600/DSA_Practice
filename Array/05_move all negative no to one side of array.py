@@ -25,7 +25,7 @@ def moveNegative(a):
             left += 1
         
         while left < right and a[right] > 0:
-            right += 1
+            right -= 1
 
         if left < right:
             a[left],a[right] = a[right],a[left]
@@ -43,4 +43,4 @@ a = [-12, 11, -13, -5, 6, -7, 5, -3, -6]
 
 
 # print(moveNeg(a))
-# print(moveNegative(a))
+print(moveNegative(a))
