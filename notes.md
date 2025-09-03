@@ -1,4 +1,12 @@
-ques 20:  We have used extra space. How to do it without extra space??
+# Run this in terminal to check no of .py files: ques u solved: 
+
+```
+Get-ChildItem -Recurse -Filter *.py | Measure-Object
+```
+
+
+
+
 
 ques 21: 
 ```
