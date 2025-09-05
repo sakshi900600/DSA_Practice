@@ -13,6 +13,7 @@ def rotateby1(arr):
     return ans
 
 
+
 def rotatebyOne(arr):
     n = len(arr)
     k = 1

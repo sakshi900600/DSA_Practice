@@ -23,6 +23,27 @@ def sortarr(a):
     return a
 
 
+def sortArr_count(a):
+    c0 = 0
+    c1 = 0
+    c2 = 0
+
+    n = len(a)
+
+    for it in a:
+        if it == 0:
+            c0 += 1
+        if it == 1:
+            c1 += 1
+        if it == 2:
+            c2 += 1
+
+    
+    a[0:c0] = [0]*c0
+    a[c0:c0+c1] = [1]*c1
+    a[c0+c1:n] = [2]*c2
+
+    return a
 
 
 # input:
@@ -30,7 +51,8 @@ a = [0, 1, 2, 0, 1, 2]
 # output:
 # a = [0,0,1,1,2,2]
 
-print(sortarr(a))
+# print(sortarr(a))
+print(sortArr_count(a))
 
 
 # NOTE: the above solution is correct but on gfg you don't need to return array at end.

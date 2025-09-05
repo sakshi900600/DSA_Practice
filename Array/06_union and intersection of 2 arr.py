@@ -1,18 +1,16 @@
-# this approach takes n^2 tc  coz everytime checking if that elem is in list or not. so can give tle
-
+# this approach gives tle 1110/1111 🤪
 def findUnion1(a,b):
-    union = []
+    s = set(a)
 
-    for i in a:
-        if i not in union:
-            union.append(i)
+    union = list(s)
 
     for i in b:
         if i not in union:
             union.append(i)
-
+    
     return union
 
+    
 
 # all good - ✅
 def findUnion2(a,b):
@@ -27,6 +25,8 @@ def findUnion2(a,b):
     return ans
 
 
+
+
 def findInterset(a,b):
     s1 = set(a)
     s2 = set(b)
@@ -34,6 +34,30 @@ def findInterset(a,b):
     ans = list(s1.intersection(s2))
     
     return ans
+
+
+# use it ✅
+def intersection(a,b):
+    n = len(a)
+    m = len(b)
+
+    i = 0
+    j = 0
+    ans = []
+
+    while i<n and j<m:
+        if a[i] == b[j]:
+            ans.append(a[i])
+            i += 1
+            j += 1
+        elif a[i] < b[j]:
+            i += 1
+        else:
+            j += 1
+
+
+    return ans
+
 
 
 # input:
@@ -53,6 +77,7 @@ b = [3, 2, 2, 3, 3, 2]
 
 
 # print(findUnion1(a,b))
+# print(findUnion2(a,b)) 
 
-print(findUnion2(a,b))
-print(findInterset(a,b))
+# print(findInterset(a,b))
+print(intersection(a,b))

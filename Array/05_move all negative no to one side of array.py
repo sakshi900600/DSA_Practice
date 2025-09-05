@@ -38,9 +38,13 @@ def moveNegative(a):
 
 # input:
 a = [-12, 11, -13, -5, 6, -7, 5, -3, -6]
+
+
 # output:
-# -12 -13 -5 -7 -3 -6 11 6 5
+print(moveNeg(a))
+# [-12, -13, -5, -7, -3, -6, 5, 6, 11]
 
 
-# print(moveNeg(a))
-print(moveNegative(a))
+# output:
+# print(moveNegative(a))
+# [-12, -6, -13, -5, -3, -7, 5, 6, 11]

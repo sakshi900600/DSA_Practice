@@ -9,6 +9,7 @@ class Solution(object):
         n = len(intervals)
 
         # sort intervals:
+        # intervals.sort(lambda x: x)
         intervals.sort()
 
         ans.append(intervals[0])

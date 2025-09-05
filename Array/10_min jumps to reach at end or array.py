@@ -31,9 +31,36 @@ def minJumps(arr):
     return -1
 
 
+
+def min_jumps(arr):
+    n = len(arr)
+
+    if n == 0 or a[0]==0:
+        return -1
+    
+    dp = [float('inf')]*n
+
+    dp[0] = 0
+
+    for i in range(n):
+        if dp[i] != float('inf'):
+            max_steps = a[i]
+
+            for j in range(1,max_steps):
+                if (i+j) < n:
+                    dp[i+j] = min(dp[i+j], dp[i]+1)
+    
+    return -1 if dp[n-1]==float('inf') else dp[n-1]
+
+
+
 # input:
 a = [1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9]
 # output: 3
 
-print(minJumps(a))
+# print(minJumps(a))
+print(min_jumps(a))
+
+
+
 

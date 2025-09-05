@@ -37,6 +37,30 @@ class Solution(object):
         return slow
         
 
+    def find_duplicate(self,arr):
+        slow = 0
+        fast = 1
+        n = len(arr)
+
+        while True:
+            slow += 1
+            fast += 2
+            
+            if slow == n:
+                slow = 0
+            if fast==n:
+                fast = 0
+            if fast==n+1:
+                fast = 1
+
+                
+            if slow == fast:
+                return slow
+
+        return -1
+            
+
+    
 
 
 if __name__ == '__main__':
@@ -47,4 +71,5 @@ if __name__ == '__main__':
     arr = [1,3,4,2,2]
     # output: 2
     
-    print(sol.findDuplicate(arr))
+    # print(sol.findDuplicate(arr))
+    print(sol.find_duplicate(arr))
