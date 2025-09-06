@@ -54,8 +54,8 @@ class Solution(object):
                 fast = 1
 
                 
-            if slow == fast:
-                return slow
+            if arr[slow] == arr[fast]:
+                return arr[slow]
 
         return -1
             

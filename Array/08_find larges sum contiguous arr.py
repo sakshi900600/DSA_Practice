@@ -19,6 +19,7 @@ class Solution:
         return maxSum
     
 
+    
 
 
 if __name__ == '__main__':
@@ -29,4 +30,15 @@ if __name__ == '__main__':
     arr = [2, 3, -8, 7, -1, 2, 3]
     # output: 11
     
-    print(sol.maxSubarraySum(arr))
+    # print(sol.maxSubarraySum(arr))
+
+
+    #  sum of subarr at index i
+    n = len(arr)
+    dp = [0]*n
+    dp[0] = arr[0]
+
+    for i in range(1,n):
+        dp[i] = dp[i-1] + arr[i]
+    
+    print(dp)
