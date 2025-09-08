@@ -8,7 +8,7 @@ class Solution:
             
         arr.sort()
 
-        mindiff = float('inf')
+        mindiff = arr[-1] - arr[0]
         small = arr[0]+k
         large = arr[n-1]-k
 
