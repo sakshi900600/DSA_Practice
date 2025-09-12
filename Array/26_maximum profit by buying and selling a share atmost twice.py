@@ -43,9 +43,63 @@ def helper(arr,idx,buy,cap,dp):
 
 
 
+
+
+
+
+
+# use the logic of buy and sell stock
+
+def maxProfitOne(prices,idx):
+
+    buy = prices[idx]
+    maxProfit = 0
+
+    for i in range(idx+1, len(prices)):
+        if prices[i] > buy:
+            profit = prices[i] - buy
+            maxProfit = max(maxProfit, profit)
+        else:
+            buy = prices[i]
+
+    return maxProfit
+
+
+
+def maxProfit(prices):
+    n = len(prices)
+
+    buy = prices[0]
+    maxProfit = 0
+
+    for i in range(1,n):
+        if prices[i] > buy:
+            profit = prices[i] - buy + maxProfitOne(prices, i)
+            maxProfit = max(maxProfit, profit)
+        else:
+            buy = prices[i]
+
+    
+    return maxProfit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Input:   
 prices = [10, 22, 5, 75, 65, 80]
 # Output:  87
 
 
-print(share_maxProfit(prices))
+# print(share_maxProfit(prices))
+
+print(maxProfit(prices))
