@@ -24,6 +24,29 @@ class Solution:
         return ans
     
 
+    # 
+    def product_arr_puzzle(self,arr):
+        n = len(arr)
+
+        prefix = [1]*n
+
+        for i in range(1,n):
+            prefix[i] = prefix[i-1]* arr[i-1]
+
+        
+        suffix = [1]*n
+        for i in range(n-2,-1,-1):
+            suffix[i] = suffix[i+1] * arr[i+1]
+        
+
+        res = [1]*n
+
+        for i in range(n):
+            res[i] = prefix[i]* suffix[i]
+
+
+        return res
+
 
 
 if __name__ == "__main__":
@@ -33,4 +56,5 @@ if __name__ == "__main__":
     arr = [10, 3, 5, 6, 2]
     # Output: [180, 600, 360, 300, 900]
 
-    print(sol.productExceptSelf(arr))
+    # print(sol.productExceptSelf(arr))
+    print(sol.product_arr_puzzle(arr))
