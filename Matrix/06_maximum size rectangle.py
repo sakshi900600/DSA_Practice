@@ -1,56 +1,4 @@
 class Solution:
-    def maxArea(self, mat):
-        # Your code here
-        n = len(mat)
-        m = len(mat[0])
-        
-        li = []
-        
-        for i in range(n):
-            sum = 0
-            for j in range(m):
-                sum += mat[i][j]
-            
-            li.append(sum)
-        
-        # print(li)
-        
-        # now its similar like largest rectangle in histogram
-        
-        return self.largest_rec_histogram(li)
-        
-        
-    
-    def largest_rec_histogram(self,heights):
-        
-        n = len(heights)
-        maxArea = 0
-        
-        
-        for i in range(n):
-            minh = heights[i]
-            
-            for j in range(i,n):
-                minh = min(minh, heights[j])
-                width = j-i+1
-                
-                area = minh * width
-                maxArea = max(maxArea, area)
-                
-        return maxArea
-                
-        
-    # I dry run this code on an example and it doesn't work 🥲.
-        
-
-
-
-
-    # for histogram width calculation you want:
-    # next[i] = n if no smaller element exists on the right,
-    # prev[i] = -1 if no smaller element exists on the left.
-
-
 
     # next smaller element:
     def next_smaller(self, a):
@@ -119,6 +67,56 @@ class Solution:
 
 
 
+def histogram_opt(a):
+    max_area = 0
+    st = [] # stack
+    a = a +[0]
+
+    n = len(a)
+    i = 0
+    while i<n:
+        if not st or (a[i] >= a[st[-1]]):
+            st.append(i)
+            i += 1
+        else:
+            top = st.pop()
+            height = a[top]
+
+            if not st:
+                width = i
+            else:
+                width = i-st[-1]-1
+            
+            area = height * width
+            # print(area)
+
+            max_area = max(max_area,area)
+    
+    return max_area
+
+
+
+def largest_rectangle(mat):
+    row = len(mat)
+    col = len(mat[0])
+    max_area = float('-inf')
+    
+    h = [0]*col
+
+    for i in range(row):
+        for j in range(col):
+            if mat[i][j] == 1:
+                h[j] += 1
+            else:
+                h[j] = 0
+        
+        max_area = max(max_area, histogram_opt(h))
+
+    # print(h)
+    return max_area
+
+
+
 
 if __name__ == "__main__":
     sol = Solution()
@@ -139,6 +137,12 @@ if __name__ == "__main__":
                 
 
     # largest rectangel in histogram:
-    a = [3,5,1,7,5,9]
+    # a = [3,5,1,7,5,9]
     # output: 15
-    print(sol.larg_rec_histo(a))
+    # print(sol.larg_rec_histo(a))
+
+
+
+
+mat = [[0,1,1,0],[1,1,1,1],[1,1,1,1],[1,1,0,0]]
+print(largest_rectangle(mat))
