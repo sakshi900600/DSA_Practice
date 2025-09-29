@@ -12,7 +12,7 @@ class Solution:
         # code here
         
         if root == None:
-            return 0
+            return -1
             
         lh = self.height(root.left)
         rh = self.height(root.right)
