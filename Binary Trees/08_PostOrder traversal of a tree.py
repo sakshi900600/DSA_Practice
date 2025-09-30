@@ -6,7 +6,9 @@ class Node:
         self.data = val
         self.left = None
 
+
 class Solution:
+    # using recursion: -----------------
     def postorder(self, root):
         # code here
         li = []
@@ -22,5 +24,24 @@ class Solution:
         self.helper(root.right,li)  
         li.append(root.data)
 
+
+    # using iterative approach -------------------
+
+    
+
         
         
+if __name__ == '__main__':
+
+    # input:
+    root = Node(5)
+    root.left = Node(3)
+    root.right = Node(6)
+    root.left.left = Node(2)
+    root.left.right = Node(4)
+
+    sol = Solution()
+    # output:
+    # [2, 4, 3, 6, 5]
+    
+    print(sol.postorder(root))

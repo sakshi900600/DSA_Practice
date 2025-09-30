@@ -7,6 +7,7 @@ class Node:
         self.left = None
 
 class Solution:
+    # using recursion: -----------------
     def preorder(self, root):
         # code here
         li = []
@@ -22,5 +23,25 @@ class Solution:
         self.helper(root.left,li)  
         self.helper(root.right,li)  
 
+
+    # using iterative approach -------------------
+
+
+
+
         
-        
+
+if __name__ == '__main__':
+
+    # input:
+    root = Node(5)
+    root.left = Node(3)
+    root.right = Node(6)
+    root.left.left = Node(2)
+    root.left.right = Node(4)
+
+    sol = Solution()
+    # output:
+    # [5, 3, 2, 4, 6]
+    
+    print(sol.preorder(root))

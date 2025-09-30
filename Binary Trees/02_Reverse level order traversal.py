@@ -1,10 +1,10 @@
-'''
+
 class Node:
     def __init__(self,val):
         self.data = val
         self.left = None
         self.right = None
-'''
+
 
 from collections import deque
 class Solution:
@@ -38,4 +38,18 @@ class Solution:
         
         
         
-        
+if __name__ == '__main__':
+
+    # input:
+    root = Node(5)
+    root.left = Node(3)
+    root.right = Node(6)
+    root.left.left = Node(2)
+    root.left.right = Node(4)
+
+    sol = Solution()
+
+    # output:
+    # [2, 4, 3, 6, 5]
+    
+    print(sol.reverseLevelOrder(root))
