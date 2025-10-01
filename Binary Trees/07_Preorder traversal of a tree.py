@@ -25,7 +25,21 @@ class Solution:
 
 
     # using iterative approach -------------------
+    def preorder_it(self, root):
+        st = []
+        li = []
 
+        st.append(root)
+        while st:
+            node = st.pop()
+            li.append(node.data)
+
+            if node.right != None:
+                st.append(node.right)
+            if node.left != None:
+                st.append(node.left)
+        
+        return li
 
 
 
@@ -44,4 +58,5 @@ if __name__ == '__main__':
     # output:
     # [5, 3, 2, 4, 6]
     
-    print(sol.preorder(root))
+    # print(sol.preorder(root))
+    print(sol.preorder_it(root))

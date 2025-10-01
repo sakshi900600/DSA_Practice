@@ -26,6 +26,24 @@ class Solution:
 
 
     # using iterative approach -------------------
+    def postorder_it(self,root):
+        st = []
+        li = []
+
+        st.append(root)
+        while st:
+            node = st.pop()
+            li.append(node.data)
+
+            if node.left != None:
+                st.append(node.left)
+            
+            if node.right != None:
+                st.append(node.right)
+
+        li.reverse()
+        return li
+        
 
     
 
@@ -44,4 +62,5 @@ if __name__ == '__main__':
     # output:
     # [2, 4, 3, 6, 5]
     
-    print(sol.postorder(root))
+    # print(sol.postorder(root))
+    print(sol.postorder_it(root))
