@@ -7,7 +7,7 @@ class Node:
 
 class Solution:
     def is_sum_tree(self, node):
-        # Helper function returns (isSumTree, sum of subtree)
+        
         def helper(node):
             if node is None:
                 return True, 0
@@ -27,7 +27,7 @@ class Solution:
             else:
                 return False, 0
 
-        isSum, _ = helper(node)  # use 'node' instead of 'root'
+        isSum, _ = helper(node)  
         return isSum
 
 
