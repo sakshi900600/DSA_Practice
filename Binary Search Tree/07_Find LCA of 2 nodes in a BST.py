@@ -6,67 +6,46 @@ class Node:
         self.right = None
 
 
-from collections import deque
 class Solution:
-    def lca(self, root, n1, n2):
+    def LCA(self, root, n1, n2):
         # code here
         
-        # store parents for each node    
-        parent_dct = {}
-        q = deque()
-        q.append((root, None))
+        if root == None:
+            return None
         
-        while q:
-            node,parent = q.popleft()
-            
-            if node not in parent_dct:
-                parent_dct[node] = parent
-            
-            if node.left != None:
-                q.append((node.left, node))
-            
-            if node.right != None:
-                q.append((node.right, node))
-        
-        
-        node1 = None
-        node2 = None
-        
-        for node in parent_dct:
-            if node.data == n1:
-                node1 = node
-            if node.data == n2:
-                node2 = node
-                
-        
-        # store ancestors of node 1
-        li = [] # ancestors
-        while node1 != None:
-            li.append(node1)
-            node1 = parent_dct[node1]
-        
-        
-        while node2 != None:
-            if node2 in li:
-                return node2
-            
-            node2 = parent_dct[node2]
-        
-            
-        
+        while root:
+            if root.data==n1.data or root.data==n2.data:
+                return root
+            elif root.data>n1.data and root.data>n2.data:
+                root = root.left
+            elif root.data<n1.data and root.data<n2.data:
+                root = root.right
+            else:
+                return root
+              
+    
         
         
 if __name__ == "__main__":
 
-    # input:
-    root = Node(3)
+    # BST input:
+    #       10
+    #      /  \
+    #     5    15
+    #    / \    / \
+    #   3   7  12  18
+
+    # node1 =5, node2 =15
+
+    root = Node(10)
     root.left = Node(5)
-    root.right = Node(1)
-    root.left.left = Node(6)
-    root.left.right = Node(2)
-    root.right.left = Node(0)
+    root.right = Node(15)
+    root.left.left = Node(3)
+    root.left.right = Node(7)
+    root.right.left = Node(12)
+    root.right.right = Node(18)
 
 
-    # Output: 3  
+    # Output: 10  
     sol = Solution()
-    print(sol.lca(root, 5, 1).data)
+    print(sol.LCA(root, root.left, root.right).data)
