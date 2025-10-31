@@ -8,21 +8,24 @@ class Node:
 
 class Solution:
     def diameter(self, root):
-        self.maxi = 0
-        self.height(root)
-        return self.maxi
+        maxi = [float('-inf')]
     
-    def height(self, root):
-        if root is None:
-            return 0
+        def height(root):
+            if root is None:
+                return 0
+            
+            lh = height(root.left)
+            rh = height(root.right)
+            
+            # Update the diameter for every node
+            maxi[0] = max(maxi[0], lh + rh)
+            
+            return 1 + max(lh, rh)
+            
         
-        lh = self.height(root.left)
-        rh = self.height(root.right)
-        
-        # Update the diameter for every node
-        self.maxi = max(self.maxi, lh + rh)
-        
-        return 1 + max(lh, rh)
+        height(root)
+        return maxi[0]
+
 
 
 if __name__ == "__main__":

@@ -37,6 +37,7 @@ class Solution(object):
         return slow
         
 
+    # this approach gives wrong ans for many outputs.
     def find_duplicate(self,arr):
         slow = 0
         fast = 1
@@ -60,6 +61,16 @@ class Solution(object):
         return -1
             
 
+    # another approach:  we will reach at each index and then we will mark that value negative .
+    def mark_duplicate(self, arr):
+        for i in range(len(arr)):
+            idx = abs(arr[i]) # taking pos value as index
+            if arr[idx] < 0: # if already negative , then we found duplicate
+                return idx
+            else: # marking value as negative
+                arr[idx] = - arr[idx]
+        return -1
+
     
 
 
@@ -72,4 +83,5 @@ if __name__ == '__main__':
     # output: 2
     
     # print(sol.findDuplicate(arr))
-    print(sol.find_duplicate(arr))
+    # print(sol.find_duplicate(arr))
+    print(sol.mark_duplicate(arr))

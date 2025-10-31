@@ -90,6 +90,8 @@ if __name__ == "__main__":
     b.right.left = Node(5)
     b.right.right = Node(4)
 
+    # Output: Yes Yes
+    
     obj = Solution()
     if obj.areMirror(a, b):
         print("Yes")

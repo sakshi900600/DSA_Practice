@@ -87,6 +87,34 @@ def maxProfit(prices):
 
 
 
+def maxProfit_dp(prices):
+    
+    # Variables to store the maximum profit 
+    # after the first and second transactions
+    firstBuy = float('-inf')  
+    firstSell = 0      
+    secondBuy = float('-inf') 
+    secondSell = 0      
+    
+    # Iterate over each day's stock prices
+    for i in range(len(prices)):
+        
+        # Calculate maximum profit
+        firstBuy = max(firstBuy, -prices[i])
+        firstSell = max(firstSell, firstBuy + prices[i])
+        secondBuy = max(secondBuy, firstSell - prices[i])
+        secondSell = max(secondSell, secondBuy + prices[i])
+    
+    # The result is the maximum 
+    # profit after the second sell
+    return secondSell
+
+if __name__ == "__main__":
+    prices = [10, 22, 5, 75, 65, 80]
+    print(maxProfit_dp(prices))
+
+
+
 
 
 
