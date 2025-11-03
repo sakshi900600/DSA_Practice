@@ -1,4 +1,6 @@
+import heapq
 class Solution:
+    # tle - coz worse case tc = O(n^2)
     def jobSequencing(self, deadline, profit):
         # code here
         
@@ -39,6 +41,44 @@ class Solution:
                 
         
         return [count, maxProfit]
+
+
+    # optimized approach using min-heap
+    def jobSequencing_opt(self, deadline, profit):
+        # code here
+        
+        maxProfit = 0
+        count = 0
+        
+        # create jobs pair
+        jobs = []
+        for i in range(len(profit)):
+            d = deadline[i]
+            p = profit[i]
+            
+            newJob = (d,p)
+            jobs.append(newJob)
+            
+        jobs.sort() # sort based on deadline in ascending order
+        pq = []
+        
+        for job in jobs:
+            d = job[0]
+            p = job[1]
+            
+            if d > len(pq):
+                heapq.heappush(pq, p)
+            elif pq and p > pq[0]:
+                heapq.heappop(pq)
+                heapq.heappush(pq, p)
+                
+        while pq:
+            maxProfit += heapq.heappop(pq)
+            count += 1
+        
+        
+        return [count, maxProfit]
+        
         
         
 
@@ -50,3 +90,4 @@ if __name__ == "__main__":
     # output: [3 142]
     obj = Solution()
     print(obj.jobSequencing(deadline, profit))
+    print(obj.jobSequencing_opt(deadline, profit))
