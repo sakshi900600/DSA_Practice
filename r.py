@@ -2,15 +2,17 @@
 # maxm profit by buy & sell stock at most twice
 # median of 2 sorted array
 
-def fun(a):
+# def fun(a):
     
     
 
 
 
 
-arr = [1, 4, 45, 6, 0, 19]
-print(fun(arr))
+# arr = [1, 4, 45, 6, 0, 19]
+# print(fun(arr))
 
-arr.sort(key)
+# arr.sort(key)
+
+
 
