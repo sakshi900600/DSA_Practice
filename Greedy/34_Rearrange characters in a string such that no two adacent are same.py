@@ -43,50 +43,65 @@ class Solution :
         # final check if adjacent char are same or not
         for i in range(1, len(rear_str)):
             if rear_str[i] == rear_str[i-1]:
-                return "-1"
+                return ""
         
         
         return rear_str
 
 
-    def rearrangeString_greedy(self, s):
+    # My approach --------------
+    def rearrange_String(self, s):
         #code here
+        n = len(s)
         
         freq = {}
+        maxfcnt = 0
+        maxfch = '#'
         
         for ch in s:
-            freq[ch] = freq.get(ch,0)+1
+            freq[ch] = freq.get(ch, 0)+1
+            
+            if freq[ch] > maxfcnt:
+                maxfcnt = freq[ch]
+                maxfch = ch
         
-        freq_val = freq.values()
-        max_freq_val = max(freq_val)
         
-        n = len(s)
-
-        # if n % 2 == 0:
-        #     if max_freq_val <= n // 2:
-        #         return True
-        # else:
-        #     if max_freq_val <= (n // 2)+1:
-        #         return True
-
-        # instead of writing even and odd seperately do this
-        if max_freq_val > (n+1)//2:
+        # checking possiblity
+        if maxfcnt > ((n+1)//2):
             return ""
+            
+        # put max freq char at even index
+        slist = list(s)
+        idx = 0
         
-
-
+        while maxfcnt > 0:
+            slist[idx] = maxfch
+            idx += 2
+            maxfcnt -= 1
+        
+        # mark max freq char freq as 0.
+        freq[maxfch] = 0
+        
+        # put rest char at even or odd index
+        for ch in 'abcdefghijklmnopqrstuvwxyz':
+            while freq.get(ch,0) > 0:
+                if idx >= n:
+                    idx = 1
                 
+                slist[idx] = ch
+                idx += 2
+                freq[ch] -= 1
         
         
-
-
+        return "".join(slist)
+        
+        
 
 
 
 if __name__ == '__main__':
     sol = Solution()
-    # s = "aaabc" # True
-    s = "aaaabc" # False
-    print(sol.rearrangeString(s))
+    # s = "aaabc" # abaca
+    s = "aaaabc" # ""
+    print(sol.rearrange_String(s))
 
-    # its incomplete ....
