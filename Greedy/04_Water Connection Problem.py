@@ -1,37 +1,37 @@
-
-# Function to find tank-tap pairs
-def findWaterDistribution(n, p, a, b, d):
-    
-    outgoing = [-1] * (n + 1)
-    incoming = [-1] * (n + 1)
-    diameter = [float('inf')] * (n + 1)
-    
-    # Building graph representation
-    for i in range(p):
-        outgoing[a[i]] = b[i]
-        incoming[b[i]] = a[i]
-        diameter[a[i]] = d[i]
-
-    result = []
-
-    # DFS to find tank-tap connections
-    for i in range(1, n + 1):
+#User function Template for python3
+class Solution:
+    def solve(self, n, p ,a, b, d): 
+        #code here
         
-        # Tank found
-        if outgoing[i] != -1 and incoming[i] == -1: 
-            curr, minDia = i, float('inf')
+        outgoing = [-1]* (n+1)
+        incoming = [-1]* (n+1)
+        diameter = [float('inf')]* (n+1)
+        
+        for i in range(p):
+            outgoing[a[i]] = b[i]
+            incoming[b[i]] = a[i]
+            diameter[a[i]] = d[i]
             
-            while outgoing[curr] != -1:  
+        
+        ans = []
+        
+        for i in range(1, n+1):
+            # house with no incoming and outgoing will get tank
+            if incoming[i] == -1 and outgoing[i] != -1:
+                curr = i
+                min_dim = float('inf')
                 
-                minDia = min(minDia, diameter[curr])
+                while outgoing[curr] != -1:
+                    min_dim = min(min_dim, diameter[curr])
+                    curr = outgoing[curr]
                 
-                # Move to next house
-                curr = outgoing[curr] 
-            
-            # Store (tank, tap, min diameter)
-            result.append([i, curr, minDia]) 
+                ans.append([i, curr, min_dim])
+        
+        
+        return ans
+                
+                
 
-    return result
 
 
 
@@ -42,4 +42,7 @@ if __name__ == "__main__":
     b = [4, 9, 6, 8, 7, 1]
     d = [98, 72, 10, 22, 17, 66]
 
-    print(findWaterDistribution(n,p,a,b,d))
+
+    # Output: [[2, 8, 22], [3, 1, 66], [5, 6, 10]]
+    sol = Solution()
+    print(sol.solve(n,p,a,b,d))
