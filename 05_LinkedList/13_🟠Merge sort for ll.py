@@ -1,1 +1,0 @@
-# I tried to write code similar as in merge sort on array. not correct.
