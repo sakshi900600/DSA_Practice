@@ -1,5 +1,5 @@
 # 1. Implementation of stack using array
-# 1. Implementation of stack using linked list
+# 2. Implementation of stack using linked list
 
 
 # 1.
