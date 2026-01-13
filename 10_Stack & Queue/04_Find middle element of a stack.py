@@ -36,6 +36,14 @@ class Stack:
         if self.head == None:
             return self.head
 
+        if self.head.next == None:
+            data = self.head.data
+            self.head = None
+            self.tail = None
+            self.mid = None
+            self.length = 0
+            return data
+
         data = self.tail.data
         self.tail.prev.next = None
         self.tail = self.tail.prev
@@ -48,29 +56,62 @@ class Stack:
     
 
     def findMid(self):
+        if self.mid == None:
+            return None
         return self.mid.data
     
+    
     def deleteMid(self):
-        if self.mid == None:
+        if self.mid is None:
             return
-        
+
+        # size = 1
+        if self.length == 1:
+            self.head = self.tail = self.mid = None
+            self.length = 0
+            return
+
         prevNode = self.mid.prev
         nextNode = self.mid.next
 
-        if prevNode != None:
+        if prevNode:
             prevNode.next = nextNode
-        if nextNode != None:
-            nextNode.prev = newNode
+        else:
+            self.head = nextNode   # mid was head
+
+        if nextNode:
+            nextNode.prev = prevNode
+        else:
+            self.tail = prevNode   # mid was tail
+
+        self.length -= 1
+
+        # update mid
+        if self.length == 1:
+            self.mid = self.head
+        elif self.length % 2 == 0:
+            self.mid = prevNode
+        else:
+            self.mid = nextNode
+
+            
 
 
 
 if __name__ == "__main__":
     st = Stack()
+    print(st.findMid(), end=" ")
+
     st.push(1)
     st.push(2)
-    print(st.findMid(), end=" ")
+    print(st.findMid())
+    print(st.deleteMid(), end=" ")
+    print(st.findMid())
     # print(st.pop())
 
+    # OUtput: 
+    # None 2
+    # None 1
 
 
 
