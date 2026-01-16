@@ -35,11 +35,12 @@ class Solution:
             
     
     # optimized ----------
-    def maxLength(self, s):
+    # see inside else if st is empty then it means its invalid. So we are storing it so that we can find out the length. basically here we are using last_invalid_idx and stack top elem as boundaries so that we cant get length of valid substrings. 
+     
+    def maxLength2(self, s):
         # code here 
-        
-        # optimized
         n = len(s)
+        last_invalid_idx = -1
         
         st = []
         maxLen = 0
@@ -48,15 +49,23 @@ class Solution:
             if s[i] == '(':
                 st.append(i)
             else:
-                if len(st) > 0:
-                    topidx = st.pop()
-                    length = i-topidx+1
+                if not st:
+                    last_invalid_idx = i
+                else:
+                    st.pop()
+                    if not st:
+                        length = i - last_invalid_idx
+                    else:
+                        length = i - st[-1]
+                    
                     maxLen = max(maxLen, length)
             
         return maxLen
 
 
-    
+
+
+
 
             
             
@@ -65,10 +74,10 @@ class Solution:
 if __name__ == "__main__":
 
     sol = Solution()
-    s = "(()("
+    # s = "(()("
     # output: 2
 
-    s = "()(())("
+    # s = "()(())("
     # output: 6
 
     s = "()))((())()(("
@@ -76,3 +85,4 @@ if __name__ == "__main__":
 
     # print(sol.isvalid(s))
     print(sol.maxLength(s))
+    print(sol.maxLength2(s))
