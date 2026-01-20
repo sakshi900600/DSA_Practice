@@ -1,31 +1,40 @@
+# I didn't understand the solution. 
+
+# My doubt:
+# suppose there exists 2 valid start indices, but the first one is not valid for the entire tour, but in this code while finding valid possible starts, it will return first one and in validity check it will fail so directly return -1 but second one will be correct then it can be wrong. 
+
+
 class Solution:
     def startStation(self, gas, cost):
         #  code here
         
         n = len(gas)
         
+        startIdx = 0
+        curr_gas = 0
+        
+        # find valid possible starts
         for i in range(n):
-            if gas[i] > cost[i]:
-                idx = i
-                total_gas = 0
+            curr_gas = curr_gas + gas[i] - cost[i]
+            
+            if curr_gas < 0:
+                startIdx = i + 1
+                curr_gas = 0
+        
+        
+        # now check validity of startIndex
+        curr_gas = 0
+        for i in range(n):
+            idx = (i+startIdx) % n # circlar index 
+            curr_gas = curr_gas + gas[idx] - cost[idx]
+            
+            if curr_gas < 0:
+                return -1
                 
-                while idx != i:
-                    if idx == n:
-                        idx = 0
-                    
-                    total_gas += gas[i]
-                    total_gas -= cost[i]
-                    
-                    if total_gas <= 0:
-                        break
-                    
-                    idx += 1
-                    
-                return i
         
-        return -1
+        return startIdx
         
-        
+              
 
 
 if __name__ == "__main__":
