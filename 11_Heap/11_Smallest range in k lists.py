@@ -46,10 +46,10 @@ class Solution:
 if __name__ == "__main__":
     sol = Solution()
     
-    mat = [[4, 10, 15, 24, 26],
-           [0, 9, 12, 20],
-           [5, 18, 22, 30]]
+    mat = [[4, 7,9,12,15],
+           [0, 8, 10, 14,20],
+           [6, 12, 16, 30, 50]]
     
     print(sol.findSmallestRange(mat))        
-            
+    # Output: [6, 8]
         

@@ -1,4 +1,4 @@
-
+import heapq
 class Solution:
 
     # tle ------
@@ -62,7 +62,10 @@ class Solution:
 if __name__ == "__main__":
     sol = Solution()
     
-    arr = [5, 15, 1, 3]
+    arr = [5, 15, 1, 3,2,8]
     print(sol.getMedian(arr))
+
+    # Output: [5, 10.0, 5, 4.0, 3, 4.0]
+
             
         
