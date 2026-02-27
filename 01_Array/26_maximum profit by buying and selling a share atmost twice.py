@@ -42,12 +42,6 @@ def helper(arr,idx,buy,cap,dp):
 
 
 
-
-
-
-
-
-
 # use the logic of buy and sell stock
 
 def maxProfitOne(prices,idx):
@@ -84,9 +78,6 @@ def maxProfit(prices):
 
 
 
-
-
-
 def maxProfit_dp(prices):
     
     # Variables to store the maximum profit 
@@ -109,16 +100,12 @@ def maxProfit_dp(prices):
     # profit after the second sell
     return secondSell
 
+
+
+
 if __name__ == "__main__":
     prices = [10, 22, 5, 75, 65, 80]
     print(maxProfit_dp(prices))
-
-
-
-
-
-
-
 
 
 
