@@ -8,36 +8,28 @@ class Node:
 class Solution:
     def deleteNode(self, head, key):
         #code here
-        
-        if head.next == head and head.data == key:
-            head = None
+        if head==None:
             return head
+        
+        tail = head.next
+        while tail.next != head:
+            tail = tail.next
         
         if head.data == key:
-            temp = head
-            
-            while temp.next != head:
-                temp = temp.next
-            
-            temp.next = head.next
-            head = temp.next
-                
+            head = head.next
+            tail.next = head
             return head
-            
-            
+        
         temp = head
-        
-        
-        while temp.next != head and temp.next.data != key:
+        while temp.next != head:
+            if temp.next.data == key:
+                temp.next = temp.next.next
+                break
             temp = temp.next
         
-        # key not found
-        if temp.next.data != key:
-            return head
-            
-        temp.next = temp.next.next
-        
         return head
+        
+        
+        
             
-            
-            
+        
