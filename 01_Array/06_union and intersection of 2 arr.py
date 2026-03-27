@@ -9,7 +9,6 @@ def findUnion1(a,b):
             union.append(i)
     
     return union
-
     
 
 # all good - ✅
@@ -24,6 +23,52 @@ def findUnion2(a,b):
 
     return ans
 
+# merge sort merge fun to find union , also for distinct elems
+def findUnion(a, b):
+    res = []
+    n, m = len(a), len(b)
+    i, j = 0, 0
+
+    while i < n and j < m:
+        # Skip duplicate elements in the first array
+        if i > 0 and a[i - 1] == a[i]:
+            i += 1
+            continue
+        
+        # Skip duplicate elements in the second array
+        if j > 0 and b[j - 1] == b[j]:
+            j += 1
+            continue
+
+        if a[i] < b[j]:
+            res.append(a[i])
+            i += 1
+        elif a[i] > b[j]:
+            res.append(b[j])
+            j += 1
+            
+        # If equal, then add to result and move both
+        else:
+            res.append(a[i])
+            i += 1
+            j += 1
+    
+    while i < n:
+        if i > 0 and a[i - 1] == a[i]:
+            i += 1
+            continue
+        res.append(a[i])
+        i += 1
+
+    while j < m:
+        if j > 0 and b[j - 1] == b[j]:
+            j += 1
+            continue
+        res.append(b[j])
+        j += 1
+        
+    
+    return res
 
 
 
