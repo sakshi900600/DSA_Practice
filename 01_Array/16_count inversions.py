@@ -43,9 +43,10 @@ class Solution:
             j += 1
         
         
-        for k in range(si,ei+1):
-            arr[k] = temp[k-si]
-            
+        # for k in range(si,ei+1):
+        #     arr[k] = temp[k-si]
+        # or
+        arr[si:ei+1] = temp[:]
             
         return inversion
             
