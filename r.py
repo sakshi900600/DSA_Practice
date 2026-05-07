@@ -34,4 +34,40 @@ def lps(s):
     return longest
 
 
-print(lps("aa"))
+# print(lps("aa"))
+
+
+
+
+
+
+
+
+# find pair with given diff
+# find 4 elem that sums to given val
+# maxm sum such that no 2 elem are adj
+# count triplet sum smaller that a given val
+# merge 2 sorted arrays
+# print all subarr with 0 sum
+# product arr puzzle
+# sort arr acc to count of set bit
+
+
+def f(arr):
+    n = len(arr)
+    x = 45
+    dct = {}
+
+    for i in arr:
+        if i-x in dct or i+x in dct:
+            return True
+        dct[i] = 1
+    
+    return False
+    
+
+
+
+
+arr = [90, 70, 20, 80, 50]
+print(f(arr))
