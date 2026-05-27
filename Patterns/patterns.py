@@ -457,6 +457,31 @@ def p24(n):
         print()
     
 
+# fibonacci triangle pattern
+
+def getfib(num):
+    fibarr = [-1]*100
+
+    fibarr[0] = 0
+    fibarr[1] = 1
+
+    for i in range(2,100):
+        fibarr[i] = fibarr[i-1] + fibarr[i-2]
+    
+    return fibarr[num]
+
+# print(getfib(5))
+
+
+def p25(n):
+    cnt = 0
+    for i in range(n):
+        for j in range(i+1):
+            print(getfib(cnt), end=" ")
+            cnt += 1
+        print()
+
+        
 
 
 # function calls:
@@ -484,5 +509,5 @@ n = 4
 # p21(n)
 # p22(n)
 # p23(n)
-p24(n)
-
+# p24(n)
+p25(n)
